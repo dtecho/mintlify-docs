@@ -3,105 +3,136 @@ title: 'Development'
 description: 'Preview changes locally to update your docs'
 ---
 
+<CardGroup cols={2}>
+  <Card title="Installation" icon="download" href="#installation">
+    Install and set up Mintlify locally
+  </Card>
+  <Card title="Local Preview" icon="browser" href="#local-preview">
+    Run and test your docs locally
+  </Card>
+  <Card title="Advanced Configuration" icon="sliders" href="#advanced-configuration">
+    Customize ports and versions
+  </Card>
+  <Card title="Development Tools" icon="screwdriver-wrench" href="#development-tools">
+    Validation and formatting tools
+  </Card>
+</CardGroup>
+
+## Installation
+
 <Info>
-  **Prerequisite**: Please install Node.js (version 19 or higher) before proceeding. <br />
-  Please upgrade to ```docs.json``` before proceeding and delete the legacy ```mint.json``` file.
+  **Prerequisites**: 
+  - Node.js (version 19 or higher)
+  - Updated ```docs.json``` file (legacy ```mint.json``` should be deleted)
 </Info>
 
-Follow these steps to install and run Mintlify on your operating system:
+<Steps>
+  <Step title="Install Mintlify CLI">
+    Choose your preferred package manager to install Mintlify globally:
 
-**Step 1**: Install Mintlify:
+    <CodeGroup>
+      ```bash npm
+      npm i -g mintlify
+      ```
 
-<CodeGroup>
+      ```bash yarn
+      yarn global add mintlify
+      ```
+    </CodeGroup>
+  </Step>
 
-  ```bash npm
-  npm i -g mintlify
-  ```
+  <Step title="Start Local Development">
+    Navigate to your docs directory (where `docs.json` is located) and run:
 
-```bash yarn
-yarn global add mintlify
-```
+    ```bash
+    mintlify dev
+    ```
 
-</CodeGroup>
+    Your documentation will be available at `http://localhost:3000`.
+  </Step>
+</Steps>
 
-**Step 2**: Navigate to the docs directory (where the `docs.json` file is located) and execute the following command:
+## Local Preview
 
-```bash
-mintlify dev
-```
+### Port Configuration
 
-A local preview of your documentation will be available at `http://localhost:3000`.
-
-### Custom Ports
-
-By default, Mintlify uses port 3000. You can customize the port Mintlify runs on by using the `--port` flag. To run Mintlify on port 3333, for instance, use this command:
+Mintlify runs on port 3000 by default. You can specify a different port using the `--port` flag:
 
 ```bash
 mintlify dev --port 3333
 ```
 
-If you attempt to run Mintlify on a port that's already in use, it will use the next available port:
+<Note>
+  If your specified port is already in use, Mintlify will automatically try the next available port:
+  ```md
+  Port 3000 is already in use. Trying 3001 instead.
+  ```
+</Note>
 
-```md
-Port 3000 is already in use. Trying 3001 instead.
-```
+## Advanced Configuration
 
-## Mintlify Versions
+### Version Management
 
-Please note that each CLI release is associated with a specific version of Mintlify. If your local website doesn't align with the production version, please update the CLI:
+Each CLI release corresponds to a specific Mintlify version. To ensure your local preview matches production, keep your CLI updated:
 
 <CodeGroup>
+  ```bash npm
+  npm i -g mintlify@latest
+  ```
 
-```bash npm
-npm i -g mintlify@latest
-```
-
-```bash yarn
-yarn global upgrade mintlify
-```
-
+  ```bash yarn
+  yarn global upgrade mintlify
+  ```
 </CodeGroup>
 
-## Validating Links
+## Development Tools
 
-The CLI can assist with validating reference links made in your documentation. To identify any broken links, use the following command:
+### Link Validation
+
+Check for broken references in your documentation using the built-in validator:
 
 ```bash
 mintlify broken-links
 ```
 
+### Code Formatting
+
+For the best development experience, we recommend:
+
+1. [MDX VSCode extension](https://marketplace.visualstudio.com/items?itemName=unifiedjs.vscode-mdx) for syntax highlighting
+2. [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) for code formatting
+
 ## Deployment
 
 <Tip>
-  Unlimited editors available under the [Pro
-  Plan](https://mintlify.com/pricing) and above.
+  Looking to collaborate with multiple editors? Check out the [Pro Plan](https://mintlify.com/pricing) for unlimited editor access.
 </Tip>
 
-If the deployment is successful, you should see the following:
+After a successful deployment, you'll see the following confirmation:
 
 <Frame>
   <img src="/images/checks-passed.png" style={{ borderRadius: '0.5rem' }} />
 </Frame>
 
-## Code Formatting
-
-We suggest using extensions on your IDE to recognize and format MDX. If you're a VSCode user, consider the [MDX VSCode extension](https://marketplace.visualstudio.com/items?itemName=unifiedjs.vscode-mdx) for syntax highlighting, and [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) for code formatting.
-
-## Troubleshooting
+## Troubleshooting Guide
 
 <AccordionGroup>
-  <Accordion title='Error: Could not load the "sharp" module using the darwin-arm64 runtime'>
+  <Accordion title='Sharp Module Error (darwin-arm64 runtime)'>
+    Follow these steps to resolve the sharp module error:
 
-    This may be due to an outdated version of node. Try the following:
-    1. Remove the currently-installed version of mintlify: `npm remove -g mintlify`
-    2. Upgrade to Node v19 or higher.
+    1. Remove existing mintlify: `npm remove -g mintlify`
+    2. Upgrade to Node v19 or higher
     3. Reinstall mintlify: `npm install -g mintlify`
   </Accordion>
 
-  <Accordion title="Issue: Encountering an unknown error">
-  
-    Solution: Go to the root of your device and delete the \~/.mintlify folder. Afterwards, run `mintlify dev` again.
+  <Accordion title="Unknown Error Resolution">
+    If you encounter an unknown error:
+    1. Navigate to your root directory
+    2. Delete the ~/.mintlify folder
+    3. Run `mintlify dev` again
   </Accordion>
 </AccordionGroup>
 
-Curious about what changed in the CLI version? [Check out the CLI changelog.](https://www.npmjs.com/package/mintlify?activeTab=versions)
+<Info>
+  Want to stay updated on CLI changes? Check out the [CLI changelog](https://www.npmjs.com/package/mintlify?activeTab=versions).
+</Info>

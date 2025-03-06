@@ -4,60 +4,108 @@ description: 'Text, title, and styling in standard markdown'
 icon: 'text-size'
 ---
 
-## Titles
+<CardGroup cols={2}>
+  <Card title="Text Formatting" icon="pen-fancy" href="#basic-text-formatting">
+    Learn how to style your text with bold, italic, and other formatting options.
+  </Card>
+  <Card title="Document Structure" icon="heading" href="#document-headers">
+    Create clear hierarchies with titles and subtitles.
+  </Card>
+  <Card title="Advanced Features" icon="wand-magic-sparkles" href="#advanced-formatting">
+    Use blockquotes, LaTeX equations, and special text formatting.
+  </Card>
+  <Card title="Navigation" icon="link" href="#page-navigation">
+    Learn how to link between pages effectively.
+  </Card>
+</CardGroup>
 
-Best used for section headers.
+## Document Headers
+
+### Main Section Headers (H2)
+
+Use H2 headers (##) to create main sections in your document. These headers automatically create anchor links and appear in the table of contents.
 
 ```md
-## Titles
+## Main Section Headers
 ```
 
-### Subtitles
+### Subsection Headers (H3)
 
-Best use to subsection headers.
+Use H3 headers (###) to create logical subsections under your main topics. These also generate anchors and appear in the navigation.
 
 ```md
-### Subtitles
+### Subsection Headers
 ```
 
 <Tip>
-
-Each **title** and **subtitle** creates an anchor and also shows up on the table of contents on the right.
-
+Each header level (H2 and H3) automatically:
+- Creates an anchor link for direct navigation
+- Appears in the right-side table of contents
+- Helps organize your content hierarchically
 </Tip>
 
-## Text Formatting
+## Basic Text Formatting
 
-We support most markdown formatting. Simply add `**`, `_`, or `~` around text to format it.
+### Bold and Italic Text
 
-| Style         | How to write it   | Result          |
-| ------------- | ----------------- | --------------- |
-| Bold          | `**bold**`        | **bold**        |
-| Italic        | `_italic_`        | _italic_        |
-| Strikethrough | `~strikethrough~` | ~strikethrough~ |
+Make your text stand out using bold and italic formatting. Here's how to use them:
 
-You can combine these. For example, write `**_bold and italic_**` to get **_bold and italic_** text.
+| Style   | Syntax    | Result    |
+| ------- | --------- | --------- |
+| Bold    | `**bold**`| **bold**  |
+| Italic  | `_italic_`| _italic_  |
 
-You need to use HTML to write superscript and subscript text. That is, add `<sup>` or `<sub>` around your text.
+### Strikethrough Text
 
-| Text Size   | How to write it          | Result                 |
-| ----------- | ------------------------ | ---------------------- |
-| Superscript | `<sup>superscript</sup>` | <sup>superscript</sup> |
-| Subscript   | `<sub>subscript</sub>`   | <sub>subscript</sub>   |
+Use strikethrough to show removed or deprecated content:
 
-## Linking to Pages
+| Style         | Syntax           | Result          |
+| ------------- | ---------------- | --------------- |
+| Strikethrough | `~strikethrough~`| ~strikethrough~ |
 
-You can add a link by wrapping text in `[]()`. You would write `[link to google](https://google.com)` to [link to google](https://google.com).
+<Note>
+You can combine different text styles. For example:
+`**_bold and italic_**` becomes **_bold and italic_**
+</Note>
 
-Links to pages in your docs need to be root-relative. Basically, you should include the entire folder path. For example, `[link to text](/writing-content/text)` links to the page "Text" in our components section.
+## Advanced Formatting
 
-Relative links like `[link to text](../text)` will open slower because we cannot optimize them as easily.
+### Superscript and Subscript
 
-## Blockquotes
+Use HTML tags for superscript and subscript text:
 
-### Singleline
+| Text Style  | Syntax                  | Result                 |
+| ----------- | ----------------------- | ---------------------- |
+| Superscript | `<sup>superscript</sup>`| <sup>superscript</sup>|
+| Subscript   | `<sub>subscript</sub>`  | <sub>subscript</sub>  |
 
-To create a blockquote, add a `>` in front of a paragraph.
+## Page Navigation
+
+### Internal Links
+
+When linking to other pages in your documentation, use root-relative paths:
+
+```md
+[link to another page](/folder/page-name)
+```
+
+<Warning>
+Avoid using relative paths like `../page-name`. These load slower and are harder to maintain.
+</Warning>
+
+### External Links
+
+For external websites, use the standard markdown link syntax:
+
+```md
+[link to google](https://google.com)
+```
+
+## Block Elements
+
+### Single-line Blockquotes
+
+Add a `>` before your text to create a simple blockquote:
 
 > Dorothy followed her through many of the beautiful rooms in her castle.
 
@@ -65,7 +113,9 @@ To create a blockquote, add a `>` in front of a paragraph.
 > Dorothy followed her through many of the beautiful rooms in her castle.
 ```
 
-### Multiline
+### Multi-line Blockquotes
+
+For longer quotes, use multiple `>` characters with empty lines between paragraphs:
 
 > Dorothy followed her through many of the beautiful rooms in her castle.
 >
@@ -77,12 +127,18 @@ To create a blockquote, add a `>` in front of a paragraph.
 > The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.
 ```
 
-### LaTeX
+## Mathematical Expressions
 
-Mintlify supports [LaTeX](https://www.latex-project.org) through the Latex component.
+### LaTeX Support
+
+Mintlify supports [LaTeX](https://www.latex-project.org) equations through the Latex component:
 
 <Latex>8 x (vk x H1 - H2) = (0,1)</Latex>
 
 ```md
 <Latex>8 x (vk x H1 - H2) = (0,1)</Latex>
 ```
+
+<Tip>
+Use LaTeX for complex mathematical formulas, equations, and scientific notation.
+</Tip>
