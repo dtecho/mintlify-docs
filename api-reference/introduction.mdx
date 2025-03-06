@@ -3,31 +3,88 @@ title: 'Introduction'
 description: 'Example section for showcasing API endpoints'
 ---
 
+<CardGroup cols={2}>
+  <Card title="Authentication" icon="lock" href="#authentication">
+    Learn how to authenticate your API requests
+  </Card>
+  <Card title="Getting Started" icon="rocket" href="#getting-started">
+    Quick start guide for using our API endpoints
+  </Card>
+  <Card title="OpenAPI Specification" icon="code" href="#openapi-specification">
+    Explore our API specification details
+  </Card>
+  <Card title="Additional Resources" icon="book" href="#additional-resources">
+    Find helpful tools and documentation
+  </Card>
+</CardGroup>
+
+## Overview
+
+Welcome to our API documentation. We provide comprehensive tools and resources to help you integrate our services into your applications.
+
 <Note>
   If you're not looking to build API reference documentation, you can delete
   this section by removing the api-reference folder.
 </Note>
 
-## Welcome
+## Getting Started
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+There are two primary methods to build API documentation in our system:
+
+<CardGroup cols={2}>
+  <Card title="OpenAPI Method" icon="file-code">
+    Use our [OpenAPI integration](https://mintlify.com/docs/api-playground/openapi/setup) for standardized documentation
+  </Card>
+  <Card title="MDX Components" icon="react">
+    Build custom docs using [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration)
+  </Card>
+</CardGroup>
+
+### OpenAPI Specification
+
+For this starter kit, we utilize a comprehensive OpenAPI specification file that defines our endpoints.
 
 <Card
-  title="Plant Store Endpoints"
+  title="Plant Store API Specification"
   icon="leaf"
   href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
 >
-  View the OpenAPI specification file
+  View our complete OpenAPI specification file
 </Card>
 
 ## Authentication
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+All API endpoints require authentication using Bearer tokens. This security requirement is defined in our OpenAPI specification.
 
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
+<Info>
+  Authentication tokens should be included in the header of each request using the Bearer scheme.
+</Info>
+
+```json Code Example
+{
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ]
+}
 ```
+
+### Token Management
+
+Keep your authentication tokens secure and never share them in public repositories or client-side code.
+
+<Tip>
+  Rotate your authentication tokens regularly and use environment variables to manage them in your applications.
+</Tip>
+
+## Additional Resources
+
+<CardGroup cols={2}>
+  <Card title="API Reference" icon="book-open" href="/api-reference/endpoints">
+    Browse our complete API endpoint documentation
+  </Card>
+  <Card title="SDKs & Tools" icon="wrench" href="/api-reference/sdks">
+    Discover development tools and SDKs
+  </Card>
+</CardGroup>
